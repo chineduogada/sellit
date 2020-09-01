@@ -1,0 +1,9 @@
+# all npm packages 
+# run `npm i` after installing
+node_modules
+
+# tasks to completed through out the project
+TODO.txt
+
+# all evironment variables
+.env
