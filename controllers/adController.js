@@ -32,6 +32,8 @@ exports.postAd = catchAsync(async (req, res, next) => {
 		...req.body,
 		userId: req.user._id,
 		slug: slugify(req.body.title),
+		ratings: [],
+		ratingsAverage: "",
 	};
 
 	const ad = await AdModel.create(reqBody);

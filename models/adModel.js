@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const adSchema = new mongoose.Schema({
 	userId: String,
 	slug: String,
+	ratings: [String],
+	ratingsAverage: String,
 	category: {
 		type: String,
 		lowercase: true,
