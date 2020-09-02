@@ -6,6 +6,7 @@ const globalErrorController = require("./controllers/globalErrorController");
 const AppError = require("./utils/AppError");
 const userRouter = require("./routes/userRouter");
 const adRouter = require("./routes/adRouter");
+const followRouter = require("./routes/followRouter");
 
 // setup express app
 const app = express();
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === "development") {
 // setup routes
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/ads", adRouter);
+app.use("/api/v1/followers", followRouter);
 
 // unhandled routes
 app.use("*", (req, res, next) => {

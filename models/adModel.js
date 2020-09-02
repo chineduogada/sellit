@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const adSchema = new mongoose.Schema({
-	userId: String,
+	user_id: String,
 	slug: String,
 	ratings: [String],
 	ratingsAverage: String,
@@ -9,9 +9,8 @@ const adSchema = new mongoose.Schema({
 		type: String,
 		lowercase: true,
 		enum: {
-			values: ["health&beauty", "animals&pests", "electronics", "fashion"],
-			message:
-				"must be either: `health&beauty`, `animals&pests`, `electronics` or `fashion`",
+			values: ["electronics", "fashion"],
+			message: "must be either: `electronics` or `fashion`",
 		},
 		required: [true, "please provide the `category`"],
 	},
@@ -78,6 +77,10 @@ const adSchema = new mongoose.Schema({
 			},
 			message: "must have one `photo` at least",
 		},
+	},
+	createdAt: {
+		type: Date,
+		default: Date.now(),
 	},
 });
 

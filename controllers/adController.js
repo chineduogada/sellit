@@ -30,7 +30,7 @@ exports.postAd = catchAsync(async (req, res, next) => {
 
 	const reqBody = {
 		...req.body,
-		userId: req.user._id,
+		user_id: req.user._id,
 		slug: slugify(req.body.title),
 		ratings: [],
 		ratingsAverage: "",
