@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const adSchema = new mongoose.Schema({
 	userId: String,
+	slug: String,
 	category: {
 		type: String,
 		lowercase: true,

@@ -1,6 +1,7 @@
 const Joi = require("joi");
 
 const catchAsync = require("../utils/catchAsync");
+const slugify = require("../utils/slugify");
 const AppError = require("../utils/AppError");
 const AdModel = require("../models/adModel");
 
@@ -27,7 +28,11 @@ exports.postAd = catchAsync(async (req, res, next) => {
 		return next(err);
 	}
 
-	const reqBody = { ...req.body, userId: req.user._id };
+	const reqBody = {
+		...req.body,
+		userId: req.user._id,
+		slug: slugify(req.body.title),
+	};
 
 	const ad = await AdModel.create(reqBody);
 
