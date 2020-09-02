@@ -1,9 +1,11 @@
 const slugify = (text) => {
-	text = text.trim();
-	text = text.replace(/[\.,]/g, "");
-	text = text.trim();
-
-	const slug = text.replace(/[\s\t_]/g, "-");
+	const slug = text
+		.trim()
+		.toLowerCase()
+		.replace(/[^\w\s\t]+/g, "")
+		.trim()
+		.replace(/\s/g, "-")
+		.replace(/-{2,}/g, "-");
 
 	return slug;
 };

@@ -1,6 +1,7 @@
 // setup env variables
 require("dotenv").config();
 const mongoose = require("mongoose");
+
 const app = require("./app");
 
 // listen to requests
