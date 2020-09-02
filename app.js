@@ -2,9 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
+const globalErrorController = require("./controllers/globalErrorController");
 const AppError = require("./utils/AppError");
 const userRouter = require("./routes/userRouter");
-const globalErrorController = require("./controllers/globalErrorController");
+const adRouter = require("./routes/adRouter");
 
 // setup express app
 const app = express();
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === "development") {
 
 // setup routes
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/ads", adRouter);
 
 // unhandled routes
 app.use("*", (req, res, next) => {

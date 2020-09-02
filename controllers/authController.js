@@ -3,9 +3,20 @@ const bcrypt = require("bcryptjs");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/AppError");
-const { signToken } = require("../utils/token");
-
+const { signToken, verifyToken } = require("../utils/token");
 const UserModel = require("../models/userModel");
+
+const getToken = (req) => {
+	const { authorization } = req.headers;
+
+	let token;
+
+	if (authorization && authorization.startsWith("Bearer")) {
+		token = authorization.split(" ")[1];
+	}
+
+	return token;
+};
 
 exports.signup = catchAsync(async (req, res, next) => {
 	const schema = {
@@ -93,5 +104,25 @@ exports.login = catchAsync(async (req, res, next) => {
 			},
 		},
 	});
+});
+
+exports.protect = catchAsync(async (req, res, next) => {
+	const token = getToken(req);
+
+	const decoded = verifyToken(token);
+
+	const user = await UserModel.findById(decoded.id);
+
+	if (!user) {
+		const err = new AppError(
+			"the user whom this token was issued to, no longer exist",
+			401
+		);
+		return next(err);
+	}
+
+	req.user = { ...user, _id: `${user._id}` };
+
+	next();
 });
 
