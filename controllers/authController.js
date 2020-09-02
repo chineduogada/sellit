@@ -108,9 +108,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
 	const token = getToken(req);
-
 	const decoded = verifyToken(token);
-
 	const user = await UserModel.findById(decoded.id);
 
 	if (!user) {
@@ -125,4 +123,21 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 	next();
 });
+
+exports.tokenIsValid = async (req, res) => {
+	try {
+		const token = getToken(req);
+		const decoded = verifyToken(token);
+		const user = await UserModel.findById(decoded.id);
+
+		if (!user) {
+			return res.status(401).send(false);
+		}
+
+		res.status(200).send(true);
+	} catch (err) {
+		err = false;
+		res.status(401).send(err);
+	}
+};
 

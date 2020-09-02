@@ -4,6 +4,8 @@ node_modules
 
 # tasks to completed through out the project
 TODO.txt
-
 # all evironment variables
 .env
+
+# vscode config
+.vscode

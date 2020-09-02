@@ -1,3 +1,5 @@
+@import "./sass/modules.scss";
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,6 +18,14 @@
 			border-radius: 10px;
 		}
 	}
+
+	*:focus {
+		outline: none !important;
+	}
+}
+
+button {
+	color: var(--background-color) !important;
 }
 
 body {
@@ -34,10 +44,7 @@ body {
 
 html {
 	// color variables
-	--primary-color: #d60e0e;
-	--primary-light-color: rgba(255, 0, 0, 0.1);
-	--primary-2-color: #af0404;
-	--primary-3-color: #7a0404;
+	--primary-color: rgb(5, 150, 5);
 
 	--assent-color: #fac907;
 
@@ -52,14 +59,4 @@ html {
 
 	//transitions
 	--transition-1: 0.3s ease;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin-bottom: 1rem;
 }
