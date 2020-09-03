@@ -38,7 +38,7 @@ describe("Header component", () => {
 		test("renders the loggedInOptions", () => {
 			const component = render(contextValue);
 
-			component.getByTestId(/my-ads/i);
+			component.getByTestId(/my-products/i);
 			component.getByTestId(/profile/i);
 			component.getByText(/sell it/i);
 		});

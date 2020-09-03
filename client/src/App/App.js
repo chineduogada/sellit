@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Axios from "axios";
 
-import Header from "../components/layouts/Header";
-import Login from "../components/pages/Login";
-import Signup from "../components/pages/Signup";
-import Home from "../components/pages/Home";
 import UserContext from "../context/UserContext";
+import Header from "../components/layouts/Header";
+import { Login, Signup, Home, Profile } from "../components/pages";
 
 function App() {
 	const [userData, setUserData] = useState({
@@ -44,6 +42,7 @@ function App() {
 				<Switch>
 					<Route path='/login' component={Login} />
 					<Route path='/signup' component={Signup} />
+					<Route path='/profile' component={Profile} />
 					<Route path='/' component={Home} />
 				</Switch>
 			</UserContext.Provider>
