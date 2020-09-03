@@ -3,7 +3,52 @@ const Joi = require("joi");
 const catchAsync = require("../utils/catchAsync");
 const slugify = require("../utils/slugify");
 const AppError = require("../utils/AppError");
+const { verifyToken, getToken } = require("../utils/token");
+const APIFeatures = require("../utils/APIFeatures");
 const ProductModel = require("../models/productModel");
+const FollowModel = require("../models/followModel");
+
+exports.getAllProducts = catchAsync(async (req, res) => {
+	// const token = getToken(req);
+	// if (token) {
+	// 	const decoded = verifyToken(token);
+
+	// 	const followings = await FollowModel.find({
+	// 		user_id: decoded.id,
+	// 	});
+
+	// }
+
+	const apiFeature = new APIFeatures(ProductModel, req.query)
+		.filter()
+		.project()
+		.paginate()
+		.sort();
+
+	let products = await apiFeature.query;
+
+	res.status(200).json({
+		status: "success",
+		count: products.length,
+		data: {
+			products,
+		},
+	});
+});
+
+exports.getAllUserProducts = catchAsync(async (req, res) => {
+	const products = await ProductModel.find({ user_id: req.params.id }).sort(
+		"-createdAt"
+	);
+
+	res.status(200).json({
+		status: "success",
+		count: products.length,
+		data: {
+			products,
+		},
+	});
+});
 
 exports.postAProduct = catchAsync(async (req, res, next) => {
 	const schema = {

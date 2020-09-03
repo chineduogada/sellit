@@ -22,3 +22,19 @@ exports.verifyToken = (token) => {
 	return decoded;
 };
 
+/**
+ * @function getToken - provide from the `headers.authorization`
+ * @param {object} req - the `request` object from `express` middlewares
+ */
+exports.getToken = (req) => {
+	const { authorization } = req.headers;
+
+	let token;
+
+	if (authorization && authorization.startsWith("Bearer")) {
+		token = authorization.split(" ")[1];
+	}
+
+	return token;
+};
+

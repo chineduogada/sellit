@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Axios from "axios";
 
 import UserContext from "../context/UserContext";
+import ProductsContext from "../context/ProductsContext";
 import Header from "../components/layouts/Header";
 import { Login, Signup, Home, Profile } from "../components/pages";
 
@@ -11,6 +12,9 @@ function App() {
 		user: undefined,
 		token: undefined,
 	});
+	const [products, setProducts] = useState(undefined);
+
+	useEffect(() => {}, []);
 
 	useEffect(() => {
 		const confirmLogin = async () => {
@@ -42,8 +46,11 @@ function App() {
 				<Switch>
 					<Route path='/login' component={Login} />
 					<Route path='/signup' component={Signup} />
-					<Route path='/profile' component={Profile} />
-					<Route path='/' component={Home} />
+
+					<ProductsContext.Provider value={{ products, setProducts }}>
+						<Route path='/profile' component={Profile} />
+						<Route path='/' component={Home} />
+					</ProductsContext.Provider>
 				</Switch>
 			</UserContext.Provider>
 		</div>

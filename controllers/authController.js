@@ -3,20 +3,8 @@ const bcrypt = require("bcryptjs");
 
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/AppError");
-const { signToken, verifyToken } = require("../utils/token");
+const { signToken, verifyToken, getToken } = require("../utils/token");
 const UserModel = require("../models/userModel");
-
-const getToken = (req) => {
-	const { authorization } = req.headers;
-
-	let token;
-
-	if (authorization && authorization.startsWith("Bearer")) {
-		token = authorization.split(" ")[1];
-	}
-
-	return token;
-};
 
 exports.signup = catchAsync(async (req, res, next) => {
 	const schema = {

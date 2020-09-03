@@ -1,10 +1,21 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
+	// ratings: [{
+	// 	user_id: String,
+	// 	ratedAt: Date
+	// }],
+	// ratingsAverage: String,
 	user_id: String,
 	slug: String,
-	ratings: [String],
-	ratingsAverage: String,
+	views: { type: Number, default: 0 },
+	is_negotiable: {
+		type: Boolean,
+		default: function () {
+			return this.price >= 10000;
+		},
+	},
+
 	category: {
 		type: String,
 		lowercase: true,
@@ -49,15 +60,15 @@ const productSchema = new mongoose.Schema({
 		min: [11, "must be more than `10` naira"],
 		required: [true, "please provide the `price`"],
 	},
-	is_negotiable: Boolean,
 	phone_number: {
 		type: String,
-		minlength: [11, "must be more than `11` chars"],
+		minlength: [11, "must be more than `10` chars"],
+		maxlength: [14, "must be less than `15` chars"],
 		required: [true, "please provide your `phone_number`"],
 	},
 	full_name: {
 		type: String,
-		minlength: [11, "must be more than `11` chars"],
+		minlength: [6, "must be more than `5` chars"],
 		required: [true, "please provide your `full_name`"],
 	},
 	plan: {
