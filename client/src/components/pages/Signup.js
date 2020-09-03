@@ -11,7 +11,7 @@ import loginAUser from "../../utils/loginAUser";
 const initialState = {
 	email: "",
 	password: "",
-	passwordCheck: "",
+	password_check: "",
 	first_name: "",
 	last_name: "",
 	phone_number: "",
@@ -73,9 +73,9 @@ function Signup() {
 					/>
 					<InputField
 						type='password'
-						id='passwordCheck'
+						id='password_check'
 						label='confirm password'
-						value={formData.passwordCheck}
+						value={formData.password_check}
 						onChange={handleChange}
 						required
 					/>
