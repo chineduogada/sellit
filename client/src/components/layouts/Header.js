@@ -3,7 +3,7 @@ import AuthOptions from "../AuthOptions";
 
 function Header() {
 	return (
-		<header className='Header'>
+		<header className='Header p-1'>
 			<div className='container flex-jc-sb flex-ai-center'>
 				<div className='brand' data-testid='sell-it.ng'>
 					sellIt

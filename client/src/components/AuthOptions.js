@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { Button, IconButton } from "@material-ui/core";
 
@@ -6,6 +7,12 @@ import UserContext from "../context/UserContext";
 
 function AuthOptions() {
 	const { userData } = useContext(UserContext);
+	const history = useHistory();
+
+	const handleLogin = () => {};
+	const handleSignup = () => {
+		history.push("/signup");
+	};
 
 	const loggedInOptions = (
 		<div className='flex-ai-center'>
@@ -27,7 +34,7 @@ function AuthOptions() {
 		<div className='flex-ai-center'>
 			<Button>login</Button>
 
-			<Button variant='contained' color='primary'>
+			<Button variant='contained' color='primary' onClick={handleSignup}>
 				sign up
 			</Button>
 		</div>

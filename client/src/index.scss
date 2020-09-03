@@ -60,3 +60,27 @@ html {
 	//transitions
 	--transition-1: 0.3s ease;
 }
+
+.App {
+	height: 100vh;
+	overflow: hidden;
+}
+
+.page {
+	flex: 1;
+}
+
+.form {
+	max-width: 400px;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+
+	.MuiFormControl-root {
+		margin-bottom: 0.75rem;
+	}
+
+	@include phone-768 {
+		margin: 0 auto;
+	}
+}

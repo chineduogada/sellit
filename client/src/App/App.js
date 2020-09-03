@@ -37,15 +37,17 @@ function App() {
 	}, []);
 
 	return (
-		<UserContext.Provider value={{ userData, setUserData }}>
-			<Header />
+		<div className='App flex-dir-col '>
+			<UserContext.Provider value={{ userData, setUserData }}>
+				<Header />
 
-			<Switch>
-				<Route path='/login' component={Login} />
-				<Route path='/signup' component={Signup} />
-				<Route path='/' component={Home} />
-			</Switch>
-		</UserContext.Provider>
+				<Switch>
+					<Route path='/login' component={Login} />
+					<Route path='/signup' component={Signup} />
+					<Route path='/' component={Home} />
+				</Switch>
+			</UserContext.Provider>
+		</div>
 	);
 }
 
