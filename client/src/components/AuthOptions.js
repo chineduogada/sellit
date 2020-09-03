@@ -9,7 +9,9 @@ function AuthOptions() {
 	const { userData } = useContext(UserContext);
 	const history = useHistory();
 
-	const handleLogin = () => {};
+	const handleLogin = () => {
+		history.push("/login");
+	};
 	const handleSignup = () => {
 		history.push("/signup");
 	};
@@ -32,7 +34,7 @@ function AuthOptions() {
 
 	const loggedOutOptions = (
 		<div className='flex-ai-center'>
-			<Button>login</Button>
+			<Button onClick={handleLogin}>login</Button>
 
 			<Button variant='contained' color='primary' onClick={handleSignup}>
 				sign up

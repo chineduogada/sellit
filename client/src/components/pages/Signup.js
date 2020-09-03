@@ -77,12 +77,14 @@ function Signup() {
 						label='confirm password'
 						value={formData.passwordCheck}
 						onChange={handleChange}
+						required
 					/>
 					<InputField
 						id='first_name'
 						label='first name'
 						value={formData.first_name}
 						onChange={handleChange}
+						required
 					/>
 					<InputField
 						id='last_name'
@@ -95,6 +97,7 @@ function Signup() {
 						label='phone number'
 						value={formData.phone_number}
 						onChange={handleChange}
+						required
 					/>
 
 					<Button color='primary' variant='contained' type='submit'>
