@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const globalErrorController = require("./controllers/globalErrorController");
 const AppError = require("./utils/AppError");
 const userRouter = require("./routes/userRouter");
-const adRouter = require("./routes/adRouter");
+const productRouter = require("./routes/productRouter");
 const followRouter = require("./routes/followRouter");
 
 // setup express app
@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "development") {
 
 // setup routes
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/ads", adRouter);
+app.use("/api/v1/products", productRouter);
 app.use("/api/v1/followers", followRouter);
 
 // unhandled routes

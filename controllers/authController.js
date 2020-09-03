@@ -22,7 +22,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 	const schema = {
 		email: Joi.string().email().required(),
 		password: Joi.string().min(5).required(),
-		passwordCheck: Joi.string().required(),
+		password_check: Joi.string().required(),
 		first_name: Joi.string().required(),
 		last_name: Joi.string().optional(),
 		phone_number: Joi.string().required(),
@@ -34,8 +34,8 @@ exports.signup = catchAsync(async (req, res, next) => {
 		return next(err);
 	}
 
-	if (req.body.password !== req.body.passwordCheck) {
-		const err = new AppError("`password` must match `passwordCheck`", 400);
+	if (req.body.password !== req.body.password_check) {
+		const err = new AppError("`password` must match `password_check`", 400);
 		return next(err);
 	}
 
@@ -48,7 +48,7 @@ exports.signup = catchAsync(async (req, res, next) => {
 	const passwordHash = await bcrypt.hash(req.body.password, 12);
 
 	const reqBody = { ...req.body, password: passwordHash };
-	Reflect.deleteProperty(reqBody, "passwordCheck");
+	Reflect.deleteProperty(reqBody, "password_check");
 
 	const user = await UserModel.create(reqBody);
 	const token = signToken({ id: user._id });

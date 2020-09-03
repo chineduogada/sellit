@@ -3,9 +3,9 @@ const Joi = require("joi");
 const catchAsync = require("../utils/catchAsync");
 const slugify = require("../utils/slugify");
 const AppError = require("../utils/AppError");
-const AdModel = require("../models/adModel");
+const ProductModel = require("../models/productModel");
 
-exports.postAd = catchAsync(async (req, res, next) => {
+exports.postAProduct = catchAsync(async (req, res, next) => {
 	const schema = {
 		category: Joi.string().required(),
 		keywords: Joi.array().required(),
@@ -36,7 +36,7 @@ exports.postAd = catchAsync(async (req, res, next) => {
 		ratingsAverage: "",
 	};
 
-	const ad = await AdModel.create(reqBody);
+	const ad = await ProductModel.create(reqBody);
 
 	res.status(201).json({
 		status: "success",

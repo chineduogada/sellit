@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const adSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
 	user_id: String,
 	slug: String,
 	ratings: [String],
@@ -84,7 +84,7 @@ const adSchema = new mongoose.Schema({
 	},
 });
 
-const AdModel = mongoose.model("Ad", adSchema);
+const ProductModel = mongoose.model("Product", productSchema);
 
-module.exports = AdModel;
+module.exports = ProductModel;
 
