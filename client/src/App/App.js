@@ -48,8 +48,10 @@ function App() {
 					<Route path='/signup' component={Signup} />
 
 					<ProductsContext.Provider value={{ products, setProducts }}>
-						<Route path='/profile' component={Profile} />
-						<Route path='/' component={Home} />
+						<Switch>
+							<Route path='/profile' component={Profile} />
+							<Route path='/' component={Home} />
+						</Switch>
 					</ProductsContext.Provider>
 				</Switch>
 			</UserContext.Provider>

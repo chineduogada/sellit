@@ -45,17 +45,17 @@ body {
 html {
 	// color variables
 	--primary-color: rgb(5, 150, 5);
+	--danger-color: rgb(255, 98, 98);
+	--assent-color: rgb(250, 201, 7);
 
-	--assent-color: #fac907;
+	--text-color: rgb(37, 37, 37);
+	--text-2-color: rgb(65, 65, 65);
 
-	--text-color: #252525;
-	--text-2-color: #414141;
-
-	--background-color: #fffbfb;
+	--background-color: rgb(255, 251, 251);
 	--background-transparent-color: rgba(255, 255, 255, 0.5);
 
-	--line-color: #ddd;
-	--line-2-color: #eee;
+	--line-color: rgb(222, 222, 222);
+	--line-2-color: rgb(238, 238, 238);
 
 	//transitions
 	--transition-1: 0.3s ease;

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function Brand() {
 	return (
-		<Link to='/' className='brand' data-testid='sell-it.ng'>
+		<Link to='/' className='Brand' data-testid='sell-it.ng'>
 			sellIt
-			<span className='brand__ng'>.ng</span>
+			<span className='Brand__ng'>.ng</span>
 		</Link>
 	);
 }

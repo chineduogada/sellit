@@ -7,6 +7,7 @@ import InputField from "../InputField";
 import UserContext from "../../context/UserContext";
 import loginAUser from "../../utils/loginAUser";
 import Page from ".";
+import Error from "../Error";
 
 const initialState = {
 	email: "",
@@ -14,11 +15,12 @@ const initialState = {
 };
 
 function Login() {
+	const [formData, setFormData] = useState(initialState);
+	const [errorMessage, setErrorMessage] = useState("");
+
 	const { setUserData } = useContext(UserContext);
 
 	const history = useHistory();
-
-	const [formData, setFormData] = useState(initialState);
 
 	const handleChange = ({ target: { value, id } }) => {
 		setFormData((prevFormData) => ({
@@ -33,7 +35,7 @@ function Login() {
 		try {
 			await loginAUser(formData, setUserData, history);
 		} catch (error) {
-			console.log(error.response);
+			setErrorMessage(error.response.data.message);
 		}
 	};
 	return (
@@ -43,6 +45,13 @@ function Login() {
 					<h3>Login</h3>
 					<AiOutlineUser />
 				</header>
+
+				{errorMessage && (
+					<Error
+						message={errorMessage}
+						onClose={() => setErrorMessage("")}
+					/>
+				)}
 
 				<InputField
 					id='email'

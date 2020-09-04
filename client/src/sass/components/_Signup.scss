@@ -7,9 +7,9 @@
 		var(--background-color) 30.15%
 	);
 
-	button {
-		margin: 0 0.375rem !important;
-	}
+	// button {
+	// 	margin: 0 0.375rem !important;
+	// }
 
 	@include phone-768 {
 		background: var(--background-color);

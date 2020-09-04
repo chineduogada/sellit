@@ -1,0 +1,50 @@
+.Brand {
+	font-weight: 900;
+	background-color: var(--background-color);
+	color: var(--primary-color);
+	border-radius: 1.5rem;
+	padding: 0.375rem 0.5675rem;
+	font-size: 1.424rem;
+	text-decoration: none;
+	transition: var(--transition-1);
+
+	&__ng {
+		font-size: 0.889rem;
+		text-decoration: underline;
+	}
+
+	&:hover,
+	&:focus {
+		background: none;
+		color: var(--background-color);
+	}
+}
+
+.Clickable {
+	color: inherit !important;
+	background: none;
+	border: none;
+	margin: 0;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&:focus {
+		border: 1px solid;
+	}
+}
+
+.Error {
+	background-color: var(--danger-color);
+
+	&__message {
+		margin: 0;
+		color: var(--background-color);
+	}
+
+	&__control * {
+		color: var(--background-color);
+		transform: translateY(3px);
+	}
+}

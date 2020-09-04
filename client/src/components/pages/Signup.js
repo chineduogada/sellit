@@ -7,6 +7,7 @@ import Axios from "axios";
 import InputField from "../InputField";
 import UserContext from "../../context/UserContext";
 import loginAUser from "../../utils/loginAUser";
+import Error from "../Error";
 
 const initialState = {
 	email: "",
@@ -23,6 +24,7 @@ function Signup() {
 	const history = useHistory();
 
 	const [formData, setFormData] = useState(initialState);
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleChange = ({ target: { value, id } }) => {
 		setFormData((prevFormData) => ({
@@ -44,7 +46,7 @@ function Signup() {
 
 			await loginAUser(loginData, setUserData, history);
 		} catch (error) {
-			console.log(error.response);
+			setErrorMessage(error.response.data.message);
 		}
 	};
 	return (
@@ -56,6 +58,12 @@ function Signup() {
 						<FaPaperPlane />
 					</header>
 
+					{errorMessage && (
+						<Error
+							message={errorMessage}
+							onClose={() => setErrorMessage("")}
+						/>
+					)}
 					<InputField
 						id='email'
 						label='email'
