@@ -25,6 +25,10 @@
 	background: none;
 	border: none;
 	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: var(--transition-1);
 
 	&:hover {
 		cursor: pointer;
@@ -46,5 +50,38 @@
 	&__control * {
 		color: var(--background-color);
 		transform: translateY(3px);
+	}
+}
+
+.SearchBox {
+	background-color: var(--background-color);
+	border-radius: 3rem;
+	overflow: hidden;
+	border: 2px solid var(--background-color);
+
+	&__input {
+		padding: 0.75rem;
+		background: none;
+		border: none;
+		color: var(--primary-color);
+		font-size: 100%;
+
+		&::placeholder {
+			text-transform: capitalize;
+		}
+	}
+
+	&__control {
+		width: 50px;
+		color: var(--background-color) !important;
+		background: var(--primary-color);
+		font-size: 110%;
+
+		&:hover,
+		&:focus {
+			color: var(--primary-color) !important;
+			background: none;
+			border: none;
+		}
 	}
 }

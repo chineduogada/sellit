@@ -7,6 +7,9 @@ export const handleSignupClick = (history) => {
 export const handleProfileClick = (history) => {
 	history.push("/profile");
 };
+export const handleSettingsClick = (history) => {
+	history.push("/profile/settings");
+};
 export const handleProductsClick = (history) => {
 	history.push("/products");
 };

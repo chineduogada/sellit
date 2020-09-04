@@ -1,8 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins|Oxygen|Montserrat&display=swap");
-
-$primaryFont: "Poppins";
-$headerFont: "Oxygen";
-
 html {
 	font: normal 100%/1.5, Georgia, serif;
 }
@@ -12,8 +7,16 @@ h2,
 h3,
 h4,
 h5,
+h6 {
+	letter-spacing: 1px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
 h6,
-p,
 blockquote,
 pre,
 ol,
@@ -24,8 +27,11 @@ figure,
 table,
 details,
 fieldset {
-	font-family: $headerFont;
 	margin: 0 0 1.5rem;
+}
+
+p {
+	margin: 0 0 0.75rem;
 }
 
 .yotta {

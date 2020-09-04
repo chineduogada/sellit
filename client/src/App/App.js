@@ -49,8 +49,24 @@ function App() {
 
 					<ProductsContext.Provider value={{ products, setProducts }}>
 						<Switch>
+							<Route
+								path='/profile/settings'
+								render={() => (
+									<main className='ProfileSetting'>
+										<div className='container'>profile settings</div>
+									</main>
+								)}
+							/>
 							<Route path='/profile' component={Profile} />
-							<Route path='/' component={Home} />
+							<Route path='/' exact component={Home} />
+							<Route
+								path='*'
+								render={() => (
+									<main className='PageNotFound'>
+										<div className='container'>page not found</div>
+									</main>
+								)}
+							/>
 						</Switch>
 					</ProductsContext.Provider>
 				</Switch>

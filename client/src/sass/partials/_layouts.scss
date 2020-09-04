@@ -33,8 +33,24 @@
 	}
 }
 
-.child-flex-1 {
+.child-flex {
 	flex: 1;
+}
+
+.p-0 {
+	padding: 0;
+}
+.pl-0 {
+	padding-left: 0;
+}
+.pr-0 {
+	padding-right: 0;
+}
+.pt-0 {
+	padding-top: 0;
+}
+.pb-0 {
+	padding-bottom: 0;
 }
 
 .p {
@@ -99,6 +115,22 @@
 }
 .pb-3 {
 	padding-bottom: 1.125rem;
+}
+
+.m-0 {
+	margin: 0;
+}
+.ml-0 {
+	margin-left: 0;
+}
+.mr-0 {
+	margin-right: 0;
+}
+.mt-0 {
+	margin-top: 0;
+}
+.mb-0 {
+	margin-bottom: 0;
 }
 
 .m {

@@ -6,7 +6,6 @@ import { AiOutlineUser } from "react-icons/ai";
 import InputField from "../InputField";
 import UserContext from "../../context/UserContext";
 import loginAUser from "../../utils/loginAUser";
-import Page from ".";
 import Error from "../Error";
 
 const initialState = {
@@ -39,41 +38,43 @@ function Login() {
 		}
 	};
 	return (
-		<Page className='Login'>
-			<form className='form' onSubmit={handleSubmit}>
-				<header className='flex-jc-sb p-1'>
-					<h3>Login</h3>
-					<AiOutlineUser />
-				</header>
+		<main className='Login'>
+			<div className='container p-1'>
+				<form className='form' onSubmit={handleSubmit}>
+					<header className='flex-jc-sb p-1'>
+						<h3>Login</h3>
+						<AiOutlineUser />
+					</header>
 
-				{errorMessage && (
-					<Error
-						message={errorMessage}
-						onClose={() => setErrorMessage("")}
+					{errorMessage && (
+						<Error
+							message={errorMessage}
+							onClose={() => setErrorMessage("")}
+						/>
+					)}
+
+					<InputField
+						id='email'
+						label='email'
+						value={formData.email}
+						onChange={handleChange}
+						required
 					/>
-				)}
+					<InputField
+						type='password'
+						id='password'
+						label='password'
+						value={formData.password}
+						onChange={handleChange}
+						required
+					/>
 
-				<InputField
-					id='email'
-					label='email'
-					value={formData.email}
-					onChange={handleChange}
-					required
-				/>
-				<InputField
-					type='password'
-					id='password'
-					label='password'
-					value={formData.password}
-					onChange={handleChange}
-					required
-				/>
-
-				<Button color='primary' variant='contained' type='submit'>
-					login
-				</Button>
-			</form>
-		</Page>
+					<Button color='primary' variant='contained' type='submit'>
+						login
+					</Button>
+				</form>
+			</div>
+		</main>
 	);
 }
 

@@ -22,16 +22,25 @@
 	}
 
 	&__opt {
-		height: 30px;
+		height: 40px;
 		display: flex;
+
+		&-text {
+			width: 100px;
+		}
+
+		&:last-child {
+			color: var(--danger-color);
+		}
 	}
+
 	&__control {
 		flex: 1;
 		border-bottom: 1px solid var(--line-color);
-		font-weight: 550;
+		// transition: var(--transition-1);
 
-		&::first-letter {
-			text-transform: uppercase;
+		&:hover {
+			transform: scale(1.02);
 		}
 	}
 }
