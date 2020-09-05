@@ -50,7 +50,7 @@ function Signup() {
 		}
 	};
 	return (
-		<main className='Signup'>
+		<main className='page Signup'>
 			<div className='container p-1'>
 				<form className='form' onSubmit={handleSubmit}>
 					<header className='flex-jc-sb p-1'>

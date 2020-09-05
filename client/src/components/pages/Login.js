@@ -38,7 +38,7 @@ function Login() {
 		}
 	};
 	return (
-		<main className='Login'>
+		<main className='page Login'>
 			<div className='container p-1'>
 				<form className='form' onSubmit={handleSubmit}>
 					<header className='flex-jc-sb p-1'>

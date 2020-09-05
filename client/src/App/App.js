@@ -3,18 +3,21 @@ import { Switch, Route } from "react-router-dom";
 import Axios from "axios";
 
 import UserContext from "../context/UserContext";
-import ProductsContext from "../context/ProductsContext";
 import Header from "../components/layouts/Header";
-import { Login, Signup, Home, Profile } from "../components/pages";
+import {
+	Login,
+	Signup,
+	Home,
+	Profile,
+	ViewAProduct,
+	ViewUserProducts,
+} from "../components/pages";
 
 function App() {
 	const [userData, setUserData] = useState({
 		user: undefined,
 		token: undefined,
 	});
-	const [products, setProducts] = useState(undefined);
-
-	useEffect(() => {}, []);
 
 	useEffect(() => {
 		const confirmLogin = async () => {
@@ -46,29 +49,26 @@ function App() {
 				<Switch>
 					<Route path='/login' component={Login} />
 					<Route path='/signup' component={Signup} />
-
-					<ProductsContext.Provider value={{ products, setProducts }}>
-						<Switch>
-							<Route
-								path='/profile/settings'
-								render={() => (
-									<main className='ProfileSetting'>
-										<div className='container'>profile settings</div>
-									</main>
-								)}
-							/>
-							<Route path='/profile' component={Profile} />
-							<Route path='/' exact component={Home} />
-							<Route
-								path='*'
-								render={() => (
-									<main className='PageNotFound'>
-										<div className='container'>page not found</div>
-									</main>
-								)}
-							/>
-						</Switch>
-					</ProductsContext.Provider>
+					<Route
+						path='/profile/settings'
+						render={() => (
+							<main className='page ProfileSetting'>
+								<div className='container'>profile settings</div>
+							</main>
+						)}
+					/>
+					<Route path='/profile' component={Profile} />
+					<Route path='/products/:slug' component={ViewAProduct} />
+					<Route path='/products' component={ViewUserProducts} />
+					<Route path='/' exact component={Home} />
+					<Route
+						path='*'
+						render={() => (
+							<main className='page PageNotFound'>
+								<div className='container'>page not found</div>
+							</main>
+						)}
+					/>
 				</Switch>
 			</UserContext.Provider>
 		</div>

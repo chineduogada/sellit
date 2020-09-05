@@ -24,7 +24,7 @@ function Profile() {
 
 	if (user) {
 		return (
-			<main className='Login'>
+			<main className='page Profile'>
 				<div className='container pr-1 pl-1'>
 					<header className='Profile__header flex-dir-col flex-ai-center'>
 						<div className='Profile__img-wrapper'>

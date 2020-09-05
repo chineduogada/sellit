@@ -1,3 +1,12 @@
+.App {
+	height: 100vh;
+	overflow: hidden;
+}
+
+.page {
+	flex: 1;
+}
+
 .container {
 	max-width: 768px;
 	margin: 0 auto;

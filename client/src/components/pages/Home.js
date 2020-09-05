@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Showcase from "../layouts/Showcase";
+import Axios from "axios";
+import Timeline from "../layouts/Timeline";
 
 function Home() {
 	return (
-		<main className='Home'>
+		<main className='page Home'>
 			<Showcase />
 
 			<div className='container'>
-				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem
-				harum rem optio eligendi ducimus, corporis pariatur! Unde sed
-				temporibus beatae ratione assumenda commodi odit quod dolorem, id,
-				quam itaque minima.
+				<Timeline route='/products' />
 			</div>
 		</main>
 	);
