@@ -5,11 +5,39 @@
 
 .page {
 	flex: 1;
+	overflow-y: auto;
 }
 
 .container {
 	max-width: 768px;
 	margin: 0 auto;
+}
+
+.form {
+	max-width: 400px;
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+
+	.MuiFormControl-root {
+		margin-bottom: 0.75rem;
+	}
+
+	@include phone-768 {
+		margin: 0 auto;
+	}
+}
+
+button {
+	color: var(--background-color) !important;
+}
+
+a {
+	transition: var(--transition-1);
+
+	&:hover {
+		color: var(--assent-2-color);
+	}
 }
 
 .flex {

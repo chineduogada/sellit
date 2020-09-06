@@ -8,7 +8,7 @@ function Showcase() {
 			<div className='container flex-jc-sb'>
 				<div className='Showcase__content'>
 					<h1 className='Showcase__heading yotta'>
-						connect to our platform and sell anything.
+						connect to our platform and sell almost anything.
 					</h1>
 
 					<ul className='Showcase__texts'>

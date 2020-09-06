@@ -1,10 +1,10 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Timeline from "../layouts/Timeline";
+import Products from "../layouts/Products";
 
-describe("Timeline", () => {
+describe("Products", () => {
 	test("renders products", () => {
-		const component = render(<Timeline />);
+		const component = render(<Products />);
 
 		component.getByTestId("loading");
 	});

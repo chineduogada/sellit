@@ -4,7 +4,7 @@ import App from "./App/App";
 import { BrowserRouter } from "react-router-dom";
 import Axios from "axios";
 
-import "./index.scss";
+import "./sass/index.scss";
 
 // Axios configuration
 let token = localStorage.getItem("auth-token");

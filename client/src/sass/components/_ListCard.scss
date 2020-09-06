@@ -1,0 +1,111 @@
+.ListCard {
+	margin-bottom: 0.375rem;
+	position: relative;
+	padding: 0;
+	display: flex;
+	height: 120px;
+
+	* {
+		margin: 0;
+	}
+
+	&__img {
+		height: 100%;
+		width: 100%;
+
+		&-wrapper {
+			width: 165px;
+			height: 120px;
+			margin-right: 0.375rem;
+			flex-shrink: 0;
+		}
+	}
+
+	// &__content {
+	// 	padding-top: 0.1875rem;
+	// }
+
+	&__title {
+		flex: 1;
+		font-style: italic;
+
+		* {
+			color: var(--text-color);
+		}
+
+		&::first-letter {
+			text-transform: uppercase;
+		}
+	}
+
+	&__price {
+		font-weight: bold;
+		opacity: 0.7;
+	}
+
+	&__description {
+		line-height: 1.2;
+		opacity: 0.7;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		padding-right: 0.375rem;
+		border-top: 1px solid var(--line-color);
+	}
+
+	&__views,
+	&__date {
+		margin-bottom: 0;
+	}
+
+	.Like,
+	.Rating,
+	&__date {
+		margin-left: 1.125rem;
+	}
+
+	&__date {
+		opacity: 0.4;
+	}
+
+	@include phone-700 {
+		&__footer {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			background-color: var(--background-color);
+		}
+	}
+	@include phone-360 {
+		&__description {
+			display: none;
+		}
+
+		&__footer {
+			position: relative;
+			display: block;
+			background-color: transparent;
+			flex-grow: 0;
+		}
+		// 	flex-direction: column;
+		// 	align-items: flex-end;
+		// 	height: 70px;
+		// }
+
+		// &__views {
+		// 	display: inline-block;
+		// }
+		.Rating,
+		.Like,
+		&__date {
+			margin: 0;
+		}
+
+		&__views {
+			display: none;
+		}
+	}
+}

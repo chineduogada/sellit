@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 
-import Timeline from "../layouts/Timeline";
+import Products from "../layouts/Products";
 import UserContext from "../../context/UserContext";
+import SearchBox from "../SearchBox";
 
 function ViewUserProducts() {
 	const {
@@ -11,12 +12,13 @@ function ViewUserProducts() {
 	console.log(user);
 
 	const renderProducts = () =>
-		user && <Timeline route={`/products?user_id=${user._id}`} />;
+		user && <Products listCard route={`/products?user_id=${user._id}`} />;
 
 	return (
 		<div className='page'>
 			<div className='container p'>
 				my products
+				<SearchBox />
 				{renderProducts()}
 			</div>
 		</div>

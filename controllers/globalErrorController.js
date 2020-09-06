@@ -36,7 +36,7 @@ const handleValidationError = (err) => {
 	const errors = Object.values(err.errors)
 		.map((el) => el.message)
 		.join(". And ");
-	const message = `invalid data input!: ${errors}`;
+	const message = `invalid data input! ${errors}`;
 
 	return new AppError(message, 400);
 };
@@ -47,7 +47,7 @@ const handleDuplicationKeyError = (err) => {
 		.replace(/[\{\}]/g, "")
 		.trim();
 
-	const message = `this exact input already exits!: '${keyValueErr}'`;
+	const message = `this exact input already exits! '${keyValueErr}'`;
 
 	return new AppError(message, 400);
 };
@@ -68,7 +68,7 @@ const globalErrController = (err, _req, res, next) => {
 		let error = { ...err, message: err.message, stack: err.stack };
 
 		if (error.name === "CastError") error = handleCastError(error);
-		if (error._message === "User validation failed")
+		if (error._message.includes("validation failed"))
 			error = handleValidationError(error);
 		if (error.name === "JsonWebTokenError")
 			error = handleJWTInvalidTokenError();

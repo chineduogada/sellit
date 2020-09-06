@@ -81,12 +81,12 @@ exports.postAProduct = catchAsync(async (req, res, next) => {
 		ratingsAverage: "",
 	};
 
-	const ad = await ProductModel.create(reqBody);
+	const product = await ProductModel.create(reqBody);
 
 	res.status(201).json({
 		status: "success",
 		data: {
-			ad,
+			product,
 		},
 	});
 });

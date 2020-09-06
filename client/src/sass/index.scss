@@ -1,4 +1,4 @@
-@import "./sass/modules.scss";
+@import "./modules.scss";
 
 * {
 	margin: 0;
@@ -24,10 +24,6 @@
 	}
 }
 
-button {
-	color: var(--background-color) !important;
-}
-
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
@@ -48,9 +44,11 @@ html {
 	--primary-dark-color: rgb(3, 119, 3);
 	--danger-color: rgb(255, 98, 98);
 	--assent-color: rgb(250, 201, 7);
+	--assent-2-color: rgb(74, 47, 224);
 
 	--text-color: rgb(37, 37, 37);
 	--text-2-color: rgb(65, 65, 65);
+	--text-2-trans-color: rgb(65, 65, 65, 0.7);
 
 	--background-color: rgb(255, 251, 251);
 	--background-trans-color: rgba(255, 255, 255, 0.5);
@@ -60,19 +58,7 @@ html {
 
 	//transitions
 	--transition-1: 0.3s ease;
-}
 
-.form {
-	max-width: 400px;
-	margin-left: auto;
-	display: flex;
-	flex-direction: column;
-
-	.MuiFormControl-root {
-		margin-bottom: 0.75rem;
-	}
-
-	@include phone-768 {
-		margin: 0 auto;
-	}
+	//shadow
+	--shadow-soft: 2px 2px 3px var(--line-2-color);
 }
