@@ -7,7 +7,6 @@ const { verifyToken, getToken } = require("../utils/token");
 const APIFeatures = require("../utils/APIFeatures");
 const ProductModel = require("../models/productModel");
 const FollowModel = require("../models/followModel");
-const formatPrice = require("../client/src/utils/formatPrice").default;
 
 exports.getAllProducts = catchAsync(async (req, res) => {
 	// const token = getToken(req);
@@ -74,13 +73,33 @@ exports.postAProduct = catchAsync(async (req, res, next) => {
 		return next(err);
 	}
 
+	// if (this.plan === "vip") {
+	// 	const err = new AppError(
+	// 		"`description`: must be `700` or less characters",
+	// 		400
+	// 	);
+	// 	return next(err);
+	// }
+	// if (this.plan === "pro") {
+	// 	const err = new AppError(
+	// 		"`description`: must be `400` or less characters",
+	// 		400
+	// 	);
+	// 	return next(err);
+	// }
+	// if (this.plan === "standard") {
+	// 	const err = new AppError(
+	// 		"`description`: must be `300` or less characters",
+	// 		400
+	// 	);
+	// 	return next(err);
+	// }
 	const reqBody = {
 		...req.body,
 		user_id: req.user._id,
 		ratings: [],
 		ratingsAverage: "",
 		slug: slugify(req.body.title),
-		// price: formatPrice("en-NG", req.body.price, "NGN"),
 	};
 
 	const product = await ProductModel.create(reqBody);

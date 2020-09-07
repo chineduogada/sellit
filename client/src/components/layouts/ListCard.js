@@ -1,14 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { FaHeart, FaStar } from "react-icons/fa";
+import { FaHeart, FaStar, FaEye } from "react-icons/fa";
 import { AiOutlineStar, AiFillCrown } from "react-icons/ai";
 
 import testImgSrc from "../../assets/img/page-not-found-sm.png";
 import { formatCardClassName } from "./Card";
 import Clickable from "../Clickable";
+import formatPrice from "../../utils/formatPrice";
+import truncate from "../../utils/truncate";
 
 function ListCard({ data, className }) {
+	data.price = formatPrice("en-NG", data.price, "NGN");
+	data.description = truncate(
+		data.description +
+			" Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, adipisci et eos id voluptatum voluptas, perferendis, blanditiis doloremque veniam vitae enim mollitia dolorum incidunt asperiores minus ab? Esse, odit sed?",
+		150
+	);
+
 	return (
 		<li className={`${formatCardClassName(data)}ListCard ${className || ""}`}>
 			<div className='ListCard__img-wrapper'>
@@ -21,13 +30,9 @@ function ListCard({ data, className }) {
 					<h5 className='ListCard__title'>
 						<Link to={`/products/${data.slug}`}>{data.title}</Link>
 					</h5>
-					<p className='ListCard__price'>{data.price}</p>
+					<p className='Card__price'>{data.price}</p>
 
-					<p className='ListCard__description'>
-						{data.description} Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Beatae, veritatis, praesentium, molestiae
-						ratione...
-					</p>
+					<p className='ListCard__description'>{data.description}</p>
 				</div>
 
 				{data.plan !== "standard" && (
@@ -39,8 +44,8 @@ function ListCard({ data, className }) {
 				)}
 
 				<footer className='ListCard__footer'>
-					<p className='ListCard__views milli'>
-						views <b>{data.views}</b>
+					<p className='Card__views ListCard__views milli'>
+						<FaEye /> <b>{data.views}</b>
 					</p>
 
 					<Clickable className='Like'>

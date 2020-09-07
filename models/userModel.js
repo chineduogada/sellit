@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
 	last_name: { type: String },
 	phone_number: {
 		type: String,
-		minlength: [11, "`phone-number`: must be more than `11` chars"],
+		minlength: [11, "`phone-number`: must be `11` or characters"],
 		required: [true, "please provide your `phone-number`"],
 	},
 	followings: Number,

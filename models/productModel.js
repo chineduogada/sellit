@@ -14,8 +14,8 @@ const productSchema = new mongoose.Schema({
 	ratings_average: {
 		type: Number,
 		default: 1.0,
-		min: [1, `'ratingsAverage' must be equal or more than '1'`],
-		max: [5, `'ratingsAverage' must be equal or less than '5'`],
+		min: [1, `'ratingsAverage' must be '1' or more`],
+		max: [5, `'ratingsAverage' must be '5' or less`],
 	},
 	category: {
 		type: String,
@@ -29,17 +29,17 @@ const productSchema = new mongoose.Schema({
 	keywords: [String],
 	region: {
 		type: String,
-		minlength: [3, "`region`: must be more than `2` chars"],
+		minlength: [3, "`region`: must be `3` or more characters"],
 		required: [true, "please provide your `region`"],
 	},
 	title: {
 		type: String,
-		minlength: [3, "`title`: must be more than `2` chars"],
+		minlength: [3, "`title`: must be `3` or more characters"],
 		required: [true, "please provide the `title`"],
 	},
 	type: {
 		type: String,
-		minlength: [3, "`type`: must be more than `2` chars"],
+		minlength: [3, "`type`: must be `3` or more characters"],
 		required: [true, "please provide the `type`"],
 	},
 	condition: {
@@ -53,7 +53,7 @@ const productSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
-		minlength: [11, "`description`: must be more than `10` chars"],
+		minlength: [11, "`description`: must be `11` or more characters"],
 		required: [true, "please provide the `description`"],
 	},
 	price: {
@@ -63,13 +63,13 @@ const productSchema = new mongoose.Schema({
 	},
 	phone_number: {
 		type: String,
-		minlength: [11, "`phone_number: must be more than `10` chars"],
-		maxlength: [14, "`phone_number: must be less than `15` chars"],
+		minlength: [11, "`phone_number: must be more than `10` characters"],
+		maxlength: [14, "`phone_number: must be less than `15` characters"],
 		required: [true, "please provide your `phone_number`"],
 	},
 	full_name: {
 		type: String,
-		minlength: [6, "`full_name`: must be more than `5` chars"],
+		minlength: [6, "`full_name`: must be more than `5` characters"],
 		required: [true, "please provide your `full_name`"],
 	},
 	plan: {
