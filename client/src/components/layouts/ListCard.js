@@ -9,6 +9,7 @@ import { formatCardClassName } from "./Card";
 import Clickable from "../Clickable";
 import formatPrice from "../../utils/formatPrice";
 import truncate from "../../utils/truncate";
+import formatDate from "../../utils/formatDate";
 
 function ListCard({ data, className }) {
 	data.price = formatPrice("en-NG", data.price, "NGN");
@@ -64,7 +65,9 @@ function ListCard({ data, className }) {
 						<b className='Rating__text'>{data.ratingsAverage || "1.0"}</b>
 					</Clickable>
 
-					<p className='ListCard__date milli'>2000-20-20.10:10</p>
+					<p className='ListCard__date milli'>
+						{formatDate(data.createdAt)}
+					</p>
 				</footer>
 			</div>
 		</li>

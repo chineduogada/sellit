@@ -12,7 +12,12 @@ function ViewUserProducts() {
 	console.log(user);
 
 	const renderProducts = () =>
-		user && <Products listCard route={`/products?user_id=${user._id}`} />;
+		user && (
+			<Products
+				listCard
+				route={`/products?user_id=${user._id}&fields=title,price,views,likes,ratingsAverage,plan,description,createdAt`}
+			/>
+		);
 
 	return (
 		<div className='page'>
