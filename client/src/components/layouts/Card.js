@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import testImgSrc from "../../assets/img/page-not-found-sm.png";
-import { FaHeart, FaStar } from "react-icons/fa";
+import { FaHeart, FaStar, FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Clickable from "../Clickable";
 import { AiOutlineStar, AiFillCrown } from "react-icons/ai";
@@ -43,7 +43,7 @@ function Card({ data, className: propClassName }) {
 				</Link>
 				<footer className='Card__footer'>
 					<p className='Card__views milli'>
-						views <b>{data.views}</b>
+						<FaEye className='Card__views-icon' /> <b>{data.views}</b>
 					</p>
 
 					<div className='flex'>
