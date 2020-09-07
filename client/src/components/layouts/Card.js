@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { AiOutlineStar, AiFillCrown } from "react-icons/ai";
+import { FaHeart, FaStar, FaEye } from "react-icons/fa";
 
 import testImgSrc from "../../assets/img/page-not-found-sm.png";
-import { FaHeart, FaStar, FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import Clickable from "../Clickable";
-import { AiOutlineStar, AiFillCrown } from "react-icons/ai";
+import formatPrice from "../../utils/formatPrice";
 
 export const formatCardClassName = (data, propClassName) => {
 	let className = `Card `;
@@ -21,6 +22,8 @@ export const formatCardClassName = (data, propClassName) => {
 	return className;
 };
 function Card({ data, className: propClassName }) {
+	data.price = formatPrice("en-NG", data.price, "NGN");
+
 	return (
 		<li className={formatCardClassName(data, propClassName)}>
 			<div className='Card__img-wrapper'>
