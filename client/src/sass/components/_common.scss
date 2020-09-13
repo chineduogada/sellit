@@ -84,3 +84,48 @@
 		}
 	}
 }
+
+.Detail {
+	text-align: center;
+
+	&__title {
+		line-height: 1;
+		margin: 0;
+		text-transform: uppercase;
+		font-weight: 500;
+	}
+
+	&__value {
+		text-transform: lowercase;
+		font-weight: 100;
+		color: var(--text-2-color) !important;
+		font-style: italic;
+	}
+}
+
+.badge {
+	margin: 0.1875rem;
+	margin-left: 0;
+	padding: 0.1875rem 0.375rem;
+	font-weight: bold;
+	list-style: none;
+	background-color: var(--line-color);
+	color: var(--text-2-color);
+	border-radius: 0.1875rem;
+	text-transform: lowercase;
+	font-size: 80%;
+	width: fit-content;
+
+	&--dark {
+		background-color: var(--text-2-color);
+		color: var(--background-color);
+	}
+
+	&-box {
+		margin-bottom: 0.375rem;
+
+		&__title {
+			margin-right: 0.5675rem;
+		}
+	}
+}

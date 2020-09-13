@@ -13,5 +13,8 @@ router.get(
 	authController.protect,
 	productController.getAllUserProducts
 );
+
+router.get("/users/:id/:slug", productController.getAProduct);
+
 module.exports = router;
 

@@ -1,5 +1,3 @@
-const Joi = require("joi");
-
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/AppError");
 const FollowModel = require("../models/followModel");
@@ -7,9 +5,9 @@ const UserModel = require("../models/userModel");
 const getFullName = require("../utils/getFullName");
 
 exports.getFollowers = catchAsync(async (req, res) => {
-	// get all users that are Followers (following) of the LoggedUser
+	// get all users that are Followers (following) of a user
 	const followers = await FollowModel.find({
-		["following.user_id"]: req.user._id,
+		["following.user_id"]: req.params.id,
 	});
 
 	res.status(201).json({
@@ -22,9 +20,9 @@ exports.getFollowers = catchAsync(async (req, res) => {
 });
 
 exports.getFollowings = catchAsync(async (req, res) => {
-	// get all users that the LoggedUser is following
+	// get all users that the a user is following
 	const followings = await FollowModel.find({
-		user_id: req.user._id,
+		user_id: req.params.id,
 	});
 
 	res.status(201).json({

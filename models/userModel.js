@@ -20,8 +20,10 @@ const userSchema = new mongoose.Schema({
 		minlength: [11, "`phone-number`: must be `11` or characters"],
 		required: [true, "please provide your `phone-number`"],
 	},
-	followings: Number,
-	followers: Number,
+	createdAt: {
+		type: Date,
+		default: Date.now(),
+	},
 });
 
 const UserModel = mongoose.model("User", userSchema);

@@ -16,6 +16,10 @@
 		}
 	}
 
+	&__name {
+		text-transform: capitalize;
+	}
+
 	&__options {
 		margin-top: 1.5rem;
 		list-style: none;

@@ -7,15 +7,14 @@
 	scroll-behavior: smooth;
 
 	&::-webkit-scrollbar {
-		width: 0.65rem;
-		height: 0.65rem;
+		width: 0.7rem;
+		height: 0.7rem;
 
 		&-track {
 			background: linear-gradient(var(--line-2-color) 30%, transparent);
 		}
 		&-thumb {
 			background: var(--primary-color);
-			border-radius: 10px;
 		}
 	}
 

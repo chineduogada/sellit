@@ -3,7 +3,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import Profile from "./Profile";
 import ViewUserProducts from "./ViewUserProducts";
-import ViewAProduct from "./ViewAProduct";
+import ViewSpecificProducts from "./ViewSpecificProducts";
 
-export { Home, Login, Signup, Profile, ViewUserProducts, ViewAProduct };
+export { Home, Login, Signup, Profile, ViewUserProducts, ViewSpecificProducts };
 

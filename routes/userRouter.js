@@ -8,6 +8,7 @@ router.post("/login", authController.login);
 router.post("/token-isvalid", authController.tokenIsValid);
 
 router.get("/", authController.protect, userController.getAUser);
+router.get("/:id", userController.getAUser);
 
 module.exports = router;
 

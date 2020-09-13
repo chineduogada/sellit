@@ -9,9 +9,10 @@ import {
 	Signup,
 	Home,
 	Profile,
-	ViewAProduct,
+	ViewSpecificProducts,
 	ViewUserProducts,
 } from "../components/pages";
+import fetchUser from "../utils/fetchUser";
 
 function App() {
 	const [userData, setUserData] = useState({
@@ -27,14 +28,13 @@ function App() {
 			);
 
 			if (tokenIsValid) {
-				const {
-					data: { data },
-				} = await Axios.get("/users");
-
-				const { user } = data;
+				const user = await fetchUser();
 				const token = localStorage.getItem("auth-token");
 
-				setUserData({ user, token });
+				setUserData({
+					user,
+					token,
+				});
 			}
 		};
 
@@ -47,19 +47,27 @@ function App() {
 				<Header />
 
 				<Switch>
-					<Route path='/login' component={Login} />
-					<Route path='/signup' component={Signup} />
+					<Route path='/login' exact component={Login} />
+					<Route path='/signup' exact component={Signup} />
+
 					<Route
 						path='/profile/settings'
+						exact
 						render={() => (
 							<main className='page ProfileSetting'>
 								<div className='container'>profile settings</div>
 							</main>
 						)}
 					/>
-					<Route path='/profile' component={Profile} />
-					<Route path='/products/:slug' component={ViewAProduct} />
-					<Route path='/products' component={ViewUserProducts} />
+					<Route path='/profile' exact component={Profile} />
+
+					<Route
+						path='/products/:slug'
+						exact
+						component={ViewSpecificProducts}
+					/>
+					<Route path='/products' exact component={ViewUserProducts} />
+
 					<Route path='/' exact component={Home} />
 					<Route
 						path='*'

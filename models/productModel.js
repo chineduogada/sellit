@@ -7,9 +7,7 @@ const productSchema = new mongoose.Schema({
 	likes: { type: Number, default: 0 },
 	is_negotiable: {
 		type: Boolean,
-		default: function () {
-			return this.price >= 10000;
-		},
+		default: false,
 	},
 	ratings_average: {
 		type: Number,

@@ -54,7 +54,7 @@ function Products({ route, title, listCard }) {
 	return (
 		<>
 			{title && <h4 className='Products__title'>{title}</h4>}
-			{renderProducts()};
+			{renderProducts()}
 		</>
 	);
 }

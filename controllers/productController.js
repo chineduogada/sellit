@@ -25,7 +25,7 @@ exports.getAllProducts = catchAsync(async (req, res) => {
 		.paginate()
 		.sort();
 
-	let products = await apiFeature.query;
+	const products = await apiFeature.query;
 
 	res.status(200).json({
 		status: "success",
@@ -35,6 +35,29 @@ exports.getAllProducts = catchAsync(async (req, res) => {
 		},
 	});
 });
+
+exports.getAProduct = async (req, res, next) => {
+	try {
+		const { id: user_id, slug } = req.params;
+
+		const product = await ProductModel.findOne({ user_id, slug });
+
+		if (!product) {
+			const err = new AppError("product not found", 404);
+			return next(err);
+		}
+
+		res.status(200).json({
+			status: "success",
+			data: {
+				product,
+			},
+		});
+	} catch (err) {
+		err = new AppError("product not found", 404);
+		return next(err);
+	}
+};
 
 exports.getAllUserProducts = catchAsync(async (req, res) => {
 	const products = await ProductModel.find({ user_id: req.params.id }).sort(
@@ -101,6 +124,18 @@ exports.postAProduct = catchAsync(async (req, res, next) => {
 		ratingsAverage: "",
 		slug: slugify(req.body.title),
 	};
+
+	const existingProduct = await ProductModel.findOne({
+		user_id: reqBody.user_id,
+		title: reqBody.title,
+	});
+	if (existingProduct) {
+		const err = new AppError(
+			"you have an existing product with the same title! please post another product",
+			400
+		);
+		return next(err);
+	}
 
 	const product = await ProductModel.create(reqBody);
 

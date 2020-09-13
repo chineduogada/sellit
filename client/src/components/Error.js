@@ -8,9 +8,11 @@ function Error({ message, onClose }) {
 		<div className='Error flex-jc-sb flex-ai-center mb-2 p-1'>
 			<p className='Error__message'>{message}</p>
 
-			<Clickable onClick={onClose} className='Error__control'>
-				<AiFillCloseCircle className='tera' />
-			</Clickable>
+			{onClose && (
+				<Clickable onClick={onClose} className='Error__control'>
+					<AiFillCloseCircle className='tera' />
+				</Clickable>
+			)}
 		</div>
 	);
 }

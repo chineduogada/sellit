@@ -67,7 +67,7 @@ const globalErrController = (err, _req, res, next) => {
 	} else {
 		let error = { ...err, message: err.message, stack: err.stack };
 
-		if (error.name === "CastError") error = handleCastError(error);
+		if (error.stack.includes("CastError")) error = handleCastError(error);
 		if (error._message && error._message.includes("validation failed"))
 			error = handleValidationError(error);
 		if (error.name === "JsonWebTokenError")

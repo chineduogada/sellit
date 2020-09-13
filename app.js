@@ -27,7 +27,7 @@ app.use("/api/v1/followers", followRouter);
 app.use("*", (req, res, next) => {
 	const err = new AppError(
 		`no such 'route: ${req.originalUrl}' with the 'method: ${req.method}', on this server`,
-		404
+		500
 	);
 	next(err);
 });

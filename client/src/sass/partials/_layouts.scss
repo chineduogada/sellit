@@ -40,12 +40,36 @@ a {
 	}
 }
 
+.capitalize {
+	text-transform: capitalize;
+}
+.lowercase {
+	text-transform: lowercase;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+
+.t-center {
+	text-align: center;
+}
+.t-right {
+	text-align: right;
+}
+.t-left {
+	text-align: left;
+}
+
 .flex {
 	display: flex;
 
 	&-dir-col {
 		@extend .flex;
 		flex-direction: column;
+	}
+	&-wrap {
+		@extend .flex;
+		flex-wrap: wrap;
 	}
 	&-jc-center {
 		@extend .flex;

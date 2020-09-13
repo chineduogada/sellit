@@ -22,7 +22,7 @@ export const formatCardClassName = (data, propClassName) => {
 	return className;
 };
 function Card({ data, className: propClassName }) {
-	data.price = formatPrice("en-NG", data.price, "NGN");
+	const price = formatPrice("en-NG", data.price, "NGN");
 
 	return (
 		<li className={formatCardClassName(data, propClassName)}>
@@ -32,9 +32,12 @@ function Card({ data, className: propClassName }) {
 			</div>
 
 			<div className='Card__content'>
-				<Link to={`/products/${data.slug}`} className='Card__header'>
+				<Link
+					to={`/products/${data.slug}?userId=${data.user_id}`}
+					className='Card__header'
+				>
 					<h6 className='Card__title milli'>{data.title}</h6>
-					<p className='Card__price'>{data.price}</p>
+					<p className='Card__price'>{price}</p>
 
 					{data.plan !== "standard" && (
 						<p className={`Card__plan Card__plan--${data.plan}`}>

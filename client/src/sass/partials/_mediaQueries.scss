@@ -8,6 +8,11 @@
 		@content;
 	}
 }
+@mixin phone-414 {
+	@media only screen and (max-width: 414px) {
+		@content;
+	}
+}
 @mixin phone-411 {
 	@media only screen and (max-width: 411px) {
 		@content;
@@ -15,6 +20,11 @@
 }
 @mixin phone-577 {
 	@media only screen and (max-width: 577px) {
+		@content;
+	}
+}
+@mixin phone-650 {
+	@media only screen and (max-width: 650px) {
 		@content;
 	}
 }

@@ -12,8 +12,8 @@ import truncate from "../../utils/truncate";
 import formatDate from "../../utils/formatDate";
 
 function ListCard({ data, className }) {
-	data.price = formatPrice("en-NG", data.price, "NGN");
-	data.description = truncate(
+	const price = formatPrice("en-NG", data.price, "NGN");
+	const description = truncate(
 		data.description +
 			" Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, adipisci et eos id voluptatum voluptas, perferendis, blanditiis doloremque veniam vitae enim mollitia dolorum incidunt asperiores minus ab? Esse, odit sed?",
 		150
@@ -29,11 +29,13 @@ function ListCard({ data, className }) {
 			<div className='ListCard__content flex-dir-col flex-jc-sb'>
 				<div>
 					<h5 className='ListCard__title'>
-						<Link to={`/products/${data.slug}`}>{data.title}</Link>
+						<Link to={`/products/${data.slug}?userId=${data.user_id}`}>
+							{data.title}
+						</Link>
 					</h5>
-					<p className='Card__price'>{data.price}</p>
+					<p className='Card__price'>{price}</p>
 
-					<p className='ListCard__description'>{data.description}</p>
+					<p className='ListCard__description'>{description}</p>
 				</div>
 
 				{data.plan !== "standard" && (
