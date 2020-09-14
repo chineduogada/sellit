@@ -25,7 +25,10 @@ function Card({ data, className: propClassName }) {
 	const price = formatPrice("en-NG", data.price, "NGN");
 
 	return (
-		<li className={formatCardClassName(data, propClassName)}>
+		<li
+			className={formatCardClassName(data, propClassName)}
+			data-testid='product'
+		>
 			<div className='Card__img-wrapper'>
 				{/* <img src={data.photos[0]} alt={data.title} /> */}
 				<img className='Card__img' src={testImgSrc} alt='card' />

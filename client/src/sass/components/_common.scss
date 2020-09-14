@@ -41,9 +41,23 @@
 .Error {
 	background-color: var(--danger-color);
 
+	&--full {
+		background: none;
+		height: 70vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 0.75rem;
+	}
+
+	&__svg {
+		width: 100%;
+		opacity: 0.5;
+	}
+
 	&__message {
 		margin: 0;
-		color: var(--background-color);
+		// color: var(--background-color);
 	}
 
 	&__control * {

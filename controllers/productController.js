@@ -3,10 +3,10 @@ const Joi = require("joi");
 const catchAsync = require("../utils/catchAsync");
 const slugify = require("../utils/slugify");
 const AppError = require("../utils/AppError");
-const { verifyToken, getToken } = require("../utils/token");
+// const { verifyToken, getToken } = require("../utils/token");
 const APIFeatures = require("../utils/APIFeatures");
 const ProductModel = require("../models/productModel");
-const FollowModel = require("../models/followModel");
+// const FollowModel = require("../models/followModel");
 
 exports.getAllProducts = catchAsync(async (req, res) => {
 	// const token = getToken(req);

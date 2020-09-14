@@ -19,6 +19,7 @@ function App() {
 		user: undefined,
 		token: undefined,
 	});
+	const [globalErr, setGlobalErr] = useState(undefined);
 
 	useEffect(() => {
 		const confirmLogin = async () => {
@@ -43,7 +44,9 @@ function App() {
 
 	return (
 		<div className='App flex-dir-col '>
-			<UserContext.Provider value={{ userData, setUserData }}>
+			<UserContext.Provider
+				value={{ userData, setUserData, globalErr, setGlobalErr }}
+			>
 				<Header />
 
 				<Switch>

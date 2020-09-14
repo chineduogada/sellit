@@ -1,12 +1,36 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render as rtl } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+
+import { server, rest } from "../../setupServer";
 import Products from "../layouts/Products";
 
-describe("Products", () => {
-	test("renders products", () => {
-		const component = render(<Products />);
+const render = () =>
+	rtl(
+		<BrowserRouter>
+			<Products route='/products' />
+		</BrowserRouter>
+	);
 
-		component.getByTestId("loading");
+describe("Products", () => {
+	describe("when fetch operation is pending", () => {
+		test("renders loading", () => {
+			const component = render();
+
+			component.getByTestId("loading");
+		});
+	});
+
+	describe("when fetch operation is completed", () => {
+		test("renders products", async () => {
+			const component = render();
+			const products = await component.findAllByTestId("product");
+			await component.findByText(/product title 1/i);
+			await component.findByText(/product title 2/i);
+			await component.findByText(/product title 3/i);
+
+			expect(products.length).toEqual(3);
+		});
 	});
 });
 

@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import Showcase from "../layouts/Showcase";
 import Products from "../layouts/Products";
+import UserContext from "../../context/UserContext";
+import Error from "../Error";
 
 function Home() {
-	console.log("render Home");
+	const { globalErr } = useContext(UserContext);
 
-	return (
-		<main className='page Home'>
-			<Showcase />
+	const renderProducts = () => {
+		if (globalErr) {
+			return <Error err={globalErr} />;
+		}
 
-			<div className='container pt-3'>
+		return (
+			<>
 				<Products
 					route='/products?plan=vip&fields=title,price,views,likes,ratingsAverage,plan,slug,user_id'
 					title='VIP products'
@@ -22,7 +26,15 @@ function Home() {
 					route='/products?plan=standard&fields=title,price,views,likes,ratingsAverage,plan,slug,user_id'
 					title='Standard products'
 				/>
-			</div>
+			</>
+		);
+	};
+
+	return (
+		<main className='page Home'>
+			<Showcase />
+
+			<div className='container pt-3'>{renderProducts()}</div>
 		</main>
 	);
 }
