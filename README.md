@@ -4,7 +4,7 @@ A website that connects buyers and sellers together, both locally and internatio
 
 ## How to test the application
 
-### `clone the repository`
+`clone the repository` or `download the project`
 
 ### `npm run start`
 
