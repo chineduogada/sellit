@@ -1,10 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## sellit
+
+A website that connects buyers and sellers together, both locally and internationally.
+
+## How to test the application
+
+### `clone the repository`
+
+### `npm run start`
+
+Runs the development server for the application.
+
+The /client of this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
+### `cd ./client`
+
+Enters the React directory.
+
 In the project directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
