@@ -1,5 +1,5 @@
-const logoutAUser = async (setUserData, history) => {
-	setUserData({ user: undefined, token: undefined });
+const logoutAUser = async (setAppData, history) => {
+	setAppData({ user: undefined, token: undefined });
 	localStorage.setItem("auth-token", "");
 	history.push("/");
 };

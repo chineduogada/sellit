@@ -2,7 +2,6 @@ import React from "react";
 import { render as rtl } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
-import { server, rest } from "../../setupServer";
 import Products from "../layouts/Products";
 
 const render = () =>
@@ -24,7 +23,7 @@ describe("Products", () => {
 	describe("when fetch operation is completed", () => {
 		test("renders products", async () => {
 			const component = render();
-			const products = await component.findAllByTestId("product");
+			const products = await component.findAllByTestId(/product-card/i);
 			await component.findByText(/product title 1/i);
 			await component.findByText(/product title 2/i);
 			await component.findByText(/product title 3/i);

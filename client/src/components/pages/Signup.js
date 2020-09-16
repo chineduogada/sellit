@@ -5,7 +5,7 @@ import { FaPaperPlane } from "react-icons/fa";
 import Axios from "axios";
 
 import InputField from "../InputField";
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 import loginAUser from "../../utils/loginAUser";
 import Error from "../Error";
 
@@ -19,7 +19,7 @@ const initialState = {
 };
 
 function Signup() {
-	const { setUserData } = useContext(UserContext);
+	const { setAppData } = useContext(AppContext);
 
 	const history = useHistory();
 
@@ -44,7 +44,7 @@ function Signup() {
 				password: formData.password,
 			};
 
-			await loginAUser(loginData, setUserData, history);
+			await loginAUser(loginData, setAppData, history);
 		} catch (error) {
 			setErrorMessage(error.response.data.message);
 		}

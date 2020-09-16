@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Axios from "axios";
-import { useParams, useLocation } from "react-router-dom";
-import queryString from "query-string";
 import { FaSpinner, FaEye, FaHeart, FaStar } from "react-icons/fa";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -16,45 +14,99 @@ import formatDate from "../../utils/formatDate";
 import BadgeBox from "../BadgeBox";
 import fetchUser from "../../utils/fetchUser";
 import UserProfile from "../UserProfile";
+import AppContext from "../../context/AppContext";
+import useQuery from "../../hooks/useQuery";
+import useParamsProperty from "../../hooks/useParamsProperty";
 
-function ViewSpecificProducts() {
+Axios.interceptors.response.use(null, (err) => {
+	const expectedError =
+		err.response && err.response.status >= 400 && err.response.status < 500;
+
+	if (!expectedError) {
+		// console.log(err);
+		// alert("an unexpected error ocurred!");
+		return Promise.reject({
+			...err,
+			isUnexpected: true,
+			message: err.response.data.message || "something went wrong",
+		});
+	}
+
+	if (err.response.status === 404) {
+		// console.log(err);
+		// alert("an unexpected error ocurred!");
+		return Promise.reject({
+			...err,
+			isNotFound: true,
+			message: err.response.data.message || "not found",
+		});
+	}
+
+	return Promise.reject(err);
+});
+
+function ViewSpecificProducts({ userId: propUserId, slug: propSlug }) {
 	const [product, setProduct] = useState(undefined);
 	const [user, setUser] = useState(undefined);
-	const [errMsg, setErrMsg] = useState(undefined);
+	const { globalErr, setGlobalErr } = useContext(AppContext);
 
-	const { slug } = useParams();
-	const { search } = useLocation();
-	const { userId } = queryString.parse(search);
+	const userId = useQuery(propUserId, "userId");
+	const slug = useParamsProperty(propSlug, "slug");
 
 	useEffect(() => {
+		let mounted = true;
+
 		if (userId) {
 			const getProduct = async () => {
 				try {
 					const {
 						data: { data },
-					} = await Axios.get(`/products/users/${userId}/${slug}`);
+					} = await Axios.get(`/products/${slug}/users/${userId}`);
 
 					const { product } = data;
 
-					setProduct(product);
+					if (mounted) {
+						setProduct(product);
+						setGlobalErr(undefined);
+					}
 				} catch (err) {
-					// setErrMsg(err.response.data.message);
+					if (mounted) {
+						err = {
+							message: err.message,
+							isUnexpected: err.isUnexpected,
+							isNotFound: err.isNotFound,
+						};
+						setGlobalErr(err);
+						setProduct({});
+					}
 				}
 			};
 
 			getProduct();
+
+			return () => {
+				mounted = false;
+			};
 		}
 	}, [slug, userId]);
 
 	useEffect(() => {
+		let mounted = true;
+
 		if (userId) {
 			const getUser = async () => {
 				const user = await fetchUser(userId);
 
-				setUser(user);
+				if (mounted) {
+					setUser(user);
+				}
 			};
 
 			getUser();
+
+			return () => {
+				mounted = false;
+			};
 		}
 	}, [userId, product]);
 
@@ -67,12 +119,12 @@ function ViewSpecificProducts() {
 	};
 
 	const renderProduct = () => {
-		if (errMsg) {
-			return <Error message={errMsg} />;
-		}
-
 		if (!product) {
 			return <FaSpinner data-testid='loading' />;
+		}
+
+		if (globalErr) {
+			return <Error err={globalErr} />;
 		}
 
 		return (
@@ -133,7 +185,7 @@ function ViewSpecificProducts() {
 
 						{product.is_negotiable && (
 							<div className='badge badge--dark'>
-								this product is{" "}
+								this product is
 								<span className='uppercase'>negotiable</span>
 							</div>
 						)}

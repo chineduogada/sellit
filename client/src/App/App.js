@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import Axios from "axios";
 
-import UserContext from "../context/UserContext";
+import AppContext from "../context/AppContext";
 import Header from "../components/layouts/Header";
 import {
 	Login,
@@ -15,7 +15,7 @@ import {
 import fetchUser from "../utils/fetchUser";
 
 function App() {
-	const [userData, setUserData] = useState({
+	const [appData, setAppData] = useState({
 		user: undefined,
 		token: undefined,
 	});
@@ -32,7 +32,7 @@ function App() {
 				const user = await fetchUser();
 				const token = localStorage.getItem("auth-token");
 
-				setUserData({
+				setAppData({
 					user,
 					token,
 				});
@@ -44,8 +44,8 @@ function App() {
 
 	return (
 		<div className='App flex-dir-col '>
-			<UserContext.Provider
-				value={{ userData, setUserData, globalErr, setGlobalErr }}
+			<AppContext.Provider
+				value={{ appData, setAppData, globalErr, setGlobalErr }}
 			>
 				<Header />
 
@@ -81,7 +81,7 @@ function App() {
 						)}
 					/>
 				</Switch>
-			</UserContext.Provider>
+			</AppContext.Provider>
 		</div>
 	);
 }

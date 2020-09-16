@@ -5,7 +5,7 @@ import { FaSpinner } from "react-icons/fa";
 
 import Card from "./Card";
 import ListCard from "./ListCard";
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 
 Axios.interceptors.response.use(null, (err) => {
 	const expectedError =
@@ -31,7 +31,7 @@ function Products({ route, title, listCard }) {
 		products: undefined,
 		count: 0,
 	});
-	const { setGlobalErr } = useContext(UserContext);
+	const { setGlobalErr } = useContext(AppContext);
 
 	useEffect(() => {
 		let mounted = true;

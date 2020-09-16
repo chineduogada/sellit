@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 
 import Products from "../layouts/Products";
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 import SearchBox from "../SearchBox";
 
 function ViewUserProducts() {
@@ -11,8 +11,8 @@ function ViewUserProducts() {
 	const { userId } = queryString.parse(location.search);
 
 	const {
-		userData: { user },
-	} = useContext(UserContext);
+		appData: { user },
+	} = useContext(AppContext);
 
 	const renderProducts = () => {
 		if (userId) {

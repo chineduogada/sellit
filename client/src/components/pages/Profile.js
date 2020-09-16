@@ -8,7 +8,7 @@ import { FaSpinner } from "react-icons/fa";
 import { useHistory, useLocation } from "react-router-dom";
 import queryString from "query-string";
 
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 import Clickable from "../Clickable";
 import { handleProductsClick, handleSettingsClick } from "../handlers";
 import logoutAUser from "../../utils/logoutAUser";
@@ -20,21 +20,23 @@ function Profile() {
 	const location = useLocation();
 	const query = queryString.parse(location.search);
 
-	const { userData, setUserData } = useContext(UserContext);
+	const { appData, setAppData } = useContext(AppContext);
 	const [user, setUser] = useState(undefined);
 
 	const isLoggedUser =
-		!query.id || (userData.user && query.id === userData.user._id);
+		!query.id || (appData.user && query.id === appData.user._id);
 
 	useEffect(() => {
 		if (!localStorage.getItem("auth-token") && !query.id) {
 			history.replace("/login");
 		}
+
+		// eslint-disabled-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		const getUser = async () => {
-			let user = userData.user;
+			let user = appData.user;
 
 			if (!isLoggedUser) {
 				user = await fetchUser(query.id);
@@ -44,7 +46,7 @@ function Profile() {
 		};
 
 		getUser();
-	}, [userData.user, query.id]);
+	}, [appData.user, query.id]);
 
 	const renderOptions = () => {
 		if (isLoggedUser) {
@@ -75,7 +77,7 @@ function Profile() {
 					<li className='Profile__opt'>
 						<Clickable
 							className='Profile__control flex-jc-center flex-ai-center'
-							onClick={() => logoutAUser(setUserData, history)}
+							onClick={() => logoutAUser(setAppData, history)}
 						>
 							<p className='Profile__opt-text m-0'>Logout</p>
 

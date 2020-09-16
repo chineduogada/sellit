@@ -52,7 +52,7 @@ const fetchUser = async (userId) => {
 			totalProducts: products.length,
 		};
 	} catch (error) {
-		return error.response.data.message;
+		return error.response && error.response.data.message;
 	}
 };
 

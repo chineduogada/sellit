@@ -4,7 +4,7 @@ import { Button } from "@material-ui/core";
 import { AiOutlineUser } from "react-icons/ai";
 
 import InputField from "../InputField";
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 import loginAUser from "../../utils/loginAUser";
 import Error from "../Error";
 
@@ -17,7 +17,7 @@ function Login() {
 	const [formData, setFormData] = useState(initialState);
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const { setUserData } = useContext(UserContext);
+	const { setAppData } = useContext(AppContext);
 
 	const history = useHistory();
 
@@ -32,7 +32,7 @@ function Login() {
 		e.preventDefault();
 
 		try {
-			await loginAUser(formData, setUserData, history);
+			await loginAUser(formData, setAppData, history);
 		} catch (error) {
 			setErrorMessage(error.response.data.message);
 		}

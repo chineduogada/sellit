@@ -22,7 +22,7 @@ function ListCard({ data, className }) {
 	return (
 		<li
 			className={`${formatCardClassName(data)}ListCard ${className || ""}`}
-			data-testid='product'
+			data-testid='product-card'
 		>
 			<div className='ListCard__img-wrapper'>
 				{/* <img src={data.photos[0]} alt={data.title} /> */}

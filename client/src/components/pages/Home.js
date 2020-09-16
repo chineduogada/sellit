@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import Showcase from "../layouts/Showcase";
 import Products from "../layouts/Products";
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 import Error from "../Error";
 
 function Home() {
-	const { globalErr } = useContext(UserContext);
+	const { globalErr } = useContext(AppContext);
 
 	const renderProducts = () => {
 		if (globalErr) {

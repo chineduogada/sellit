@@ -2,22 +2,22 @@ import React from "react";
 import { render as rlt } from "@testing-library/react";
 import Header from "../layouts/Header";
 import { BrowserRouter } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import AppContext from "../../context/AppContext";
 
 const render = (
 	contextValue = {
-		userData: {
+		appData: {
 			token: undefined,
 			user: undefined,
 		},
-		setUserData: () => {},
+		setAppData: () => {},
 	}
 ) =>
 	rlt(
 		<BrowserRouter>
-			<UserContext.Provider value={{ ...contextValue }}>
+			<AppContext.Provider value={{ ...contextValue }}>
 				<Header />
-			</UserContext.Provider>
+			</AppContext.Provider>
 		</BrowserRouter>
 	);
 
@@ -29,11 +29,11 @@ describe("Header component", () => {
 
 	describe("when logged in", () => {
 		const contextValue = {
-			userData: {
+			appData: {
 				token: "test token",
 				user: { _id: "test id", email: "test@email.com" },
 			},
-			setUserData: () => {},
+			setAppData: () => {},
 		};
 		test("renders the loggedInOptions", () => {
 			const component = render(contextValue);

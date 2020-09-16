@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { AiOutlineUser, AiOutlineMenuUnfold } from "react-icons/ai";
 import { Button, IconButton } from "@material-ui/core";
 
-import UserContext from "../context/UserContext";
+import AppContext from "../context/AppContext";
 import {
 	handleProductsClick,
 	handleProfileClick,
@@ -13,7 +13,7 @@ import {
 } from "./handlers";
 
 function AuthOptions() {
-	const { userData } = useContext(UserContext);
+	const { appData } = useContext(AppContext);
 	const history = useHistory();
 
 	const loggedInOptions = (
@@ -58,7 +58,7 @@ function AuthOptions() {
 		</div>
 	);
 
-	if (userData.token) {
+	if (appData.token) {
 		return loggedInOptions;
 	}
 	return loggedOutOptions;

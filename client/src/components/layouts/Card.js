@@ -27,7 +27,7 @@ function Card({ data, className: propClassName }) {
 	return (
 		<li
 			className={formatCardClassName(data, propClassName)}
-			data-testid='product'
+			data-testid='product-card'
 		>
 			<div className='Card__img-wrapper'>
 				{/* <img src={data.photos[0]} alt={data.title} /> */}

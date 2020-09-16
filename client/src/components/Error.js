@@ -9,7 +9,7 @@ function Error({ err, message, onClose }) {
 	if (err) {
 		if (err.isUnexpected)
 			return (
-				<div className='Error Error--full'>
+				<div data-testid='error' className='Error Error--full'>
 					<img
 						src={notFoundSvg}
 						alt='unexpected error'
@@ -20,7 +20,7 @@ function Error({ err, message, onClose }) {
 
 		if (err.isNotFound)
 			return (
-				<div className='Error Error--full'>
+				<div data-testid='error' className='Error Error--full'>
 					<img
 						src={notFoundSvg}
 						alt='not found error'
@@ -31,7 +31,10 @@ function Error({ err, message, onClose }) {
 	}
 
 	return (
-		<div className='Error flex-jc-sb flex-ai-center mb-2 p-1'>
+		<div
+			data-testid='error'
+			className='Error flex-jc-sb flex-ai-center mb-2 p-1'
+		>
 			<p className='Error__message'>{(err && err.message) || message}</p>
 
 			{onClose && (

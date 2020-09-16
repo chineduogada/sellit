@@ -14,7 +14,7 @@ router.get(
 	productController.getAllUserProducts
 );
 
-router.get("/users/:id/:slug", productController.getAProduct);
+router.get("/:slug/users/:id", productController.getAProduct);
 
 module.exports = router;
 
