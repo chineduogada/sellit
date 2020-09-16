@@ -10,7 +10,7 @@ A website that connects buyers and sellers together, both locally and internatio
 
 Runs the development server for the application.
 
-The /client of this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The ./client of this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
