@@ -10,10 +10,9 @@ A website that connects buyers and sellers together, both locally and internatio
 
 #### please change the environment variables `.env`, for your local clone to run properly.
 
+## Available Scripts
 
 with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
 
 ### `cd ./client`
 
