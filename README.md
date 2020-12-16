@@ -6,13 +6,12 @@ A website that connects buyers and sellers together, both locally and internatio
 
 `clone the repository` or `download the project`
 
-### `npm run start` to start server.
+### `npm run start` Runs the development server for the application.
 
 #### please change the environment variables `.env`, for your local clone to run properly.
 
-Runs the development server for the application.
 
-The ./client of this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
