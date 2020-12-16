@@ -6,7 +6,9 @@ A website that connects buyers and sellers together, both locally and internatio
 
 `clone the repository` or `download the project`
 
-### `npm run start`
+### `npm run start` to start server.
+
+#### please change the environment variables `.env`, for your local clone to run properly.
 
 Runs the development server for the application.
 
